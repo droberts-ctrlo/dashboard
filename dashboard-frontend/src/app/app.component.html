@@ -1,14 +1,14 @@
-<ktd-grid [cols]="cols" [rowHeight]="rowHeight" [layout]="layout">
+<ktd-grid [cols]="cols" [rowHeight]="rowHeight" [layout]="layout" (layoutUpdated)="onLayoutChange($event)">
 
-  <ktd-grid-item *ngFor="let item of layout; trackBy:trackById" [id]="item.id">
+  <ktd-grid-item *ngFor="let item of items; trackBy:trackById" [id]="item.id">
     <div class="item-content">
       <div class="item-content-header">
         <h1>Item {{ item.id }}</h1>
       </div>
       <div class="item-content-body">
-        <p *ngIf="item.text">{{ item.text }}</p>
-        <div *ngIf="item.img">
-          <img [src]="item.img" alt="Image {{ item.id }}">
+        <p *ngIf="item.type === 'text'">{{ item.content }}</p>
+        <div *ngIf="item.type === 'image'">
+          <img [src]="item.content" alt="Image {{ item.id }}">
         </div>
       </div>
     </div>
