@@ -10,6 +10,20 @@
         <div *ngIf="item.type === 'image'">
           <img [src]="item.content" alt="Image {{ item.id }}">
         </div>
+        <div *ngIf="item.type === 'table'">
+          <table>
+            <thead *ngif="item.table!.headers">
+              <tr>
+                <td *ngFor="let header of item.table!.headers">{{ header }}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of item.table!.rows">
+                <td *ngFor="let cell of row">{{ cell }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </ktd-grid-item>
